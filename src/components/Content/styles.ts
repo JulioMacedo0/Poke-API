@@ -6,7 +6,7 @@ export const Container = styled.main`
   margin: 0 auto;
   padding: 1rem;
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
 `;
