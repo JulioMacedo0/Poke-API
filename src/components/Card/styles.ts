@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding: 1rem;
   min-width: 13rem;
+  height: 10rem;
   border-radius: 1rem;
   background-color: ${(props) => props.theme["green"]};
   transition: transform 0.2s, box-shadow 0.2s;
