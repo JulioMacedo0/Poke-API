@@ -24,6 +24,12 @@ export const HeaderWrap = styled.div`
       color: white;
     }
   }
+
+  @media (max-width: 350px) {
+    img {
+      display: none;
+    }
+  }
 `;
 
 export const ImgLogo = styled.img`
