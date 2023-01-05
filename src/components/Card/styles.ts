@@ -5,9 +5,12 @@ export const Container = styled.div`
   min-width: 13rem;
   border-radius: 1rem;
   background-color: ${(props) => props.theme["green"]};
+  transition: transform 0.2s, box-shadow 0.2s;
 
   :hover {
     cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0px 10px 10px ${(props) => props.theme["black"]};
   }
 `;
 
