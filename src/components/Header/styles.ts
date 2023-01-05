@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HeaderContainer = styled.header`
   width: 100vw;
   height: 5.3125rem;
-  background-color: red;
+  background-color: ${(props) => props.theme["black"]};
 `;
 
 export const HeaderWrap = styled.div`
