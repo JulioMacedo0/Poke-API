@@ -5,6 +5,10 @@ export const Container = styled.div`
   min-width: 13rem;
   border-radius: 1rem;
   background-color: ${(props) => props.theme["green"]};
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const Content = styled.div`
