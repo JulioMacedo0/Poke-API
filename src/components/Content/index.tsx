@@ -8,6 +8,12 @@ interface ArrayPokemons {
   url: string;
 }
 
+interface Types {
+  type: {
+    name: string;
+  };
+}
+
 interface Pokemons {
   sprites: {
     other: {
@@ -18,6 +24,7 @@ interface Pokemons {
   };
   name: string;
   id: number;
+  types: Types[];
 }
 
 interface CardsType {
@@ -57,15 +64,16 @@ export const Content = () => {
     });
   }, []);
 
-  console.log(Pokemons);
   return (
     <S.Container>
       {Pokemons.map((pokemon) => {
+        console.log(pokemon.types + " type test");
         return (
           <Card
             key={pokemon.id}
             name={pokemon.name}
             pokemonImg={pokemon.sprites.other.dream_world.front_default}
+            types={pokemon.types}
           />
         );
       })}
