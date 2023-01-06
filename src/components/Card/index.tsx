@@ -15,12 +15,14 @@ interface CardProps {
 
 export const Card = ({ name, pokemonImg, types }: CardProps) => {
   return (
-    <S.Container>
+    <S.Container type={types[0].type.name}>
       <Title>{name}</Title>
       <S.Content>
         <S.TypeDiv>
           {types.map((type) => (
-            <S.TypeSpan key={type.type.name}>{type.type.name}</S.TypeSpan>
+            <S.TypeSpan type={types[0].type.name} key={type.type.name}>
+              {type.type.name}
+            </S.TypeSpan>
           ))}
         </S.TypeDiv>
         <S.Image src={pokemonImg} />
