@@ -1,12 +1,16 @@
 import styled from "styled-components";
+import { GetColor } from "../../helpers/getColor";
+interface Primarytype {
+  type: string;
+}
 
-export const Container = styled.div`
+export const Container = styled.div<Primarytype>`
   width: 17.5rem;
   padding: 1rem;
   min-width: 13rem;
   height: 10rem;
   border-radius: 1rem;
-  background-color: ${(props) => props.theme["green"]};
+  background-color: ${(props) => GetColor(props.type)};
   transition: transform 0.2s, box-shadow 0.2s;
 
   :hover {
@@ -37,9 +41,9 @@ export const Image = styled.img`
   height: 6rem;
 `;
 
-export const TypeSpan = styled.span`
+export const TypeSpan = styled.span<Primarytype>`
   color: ${(props) => props.theme["title"]};
-  background-color: ${(props) => props.theme["green"]};
+  background-color: ${(props) => GetColor(props.type)};
 
   padding: 0.1rem 1rem;
   font-size: 0.75rem;
