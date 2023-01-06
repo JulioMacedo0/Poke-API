@@ -1,20 +1,27 @@
-import { Title, TypeSpan } from "../StylesComponents/styles";
-import PokeImg from "../../assets/buba.svg";
+import { Title } from "../StylesComponents/styles";
 import * as S from "./styles";
+
+interface Types {
+  type: {
+    name: string;
+  };
+}
 
 interface CardProps {
   name: string;
   pokemonImg: string;
+  types: Types[];
 }
 
-export const Card = ({ name, pokemonImg }: CardProps) => {
+export const Card = ({ name, pokemonImg, types }: CardProps) => {
   return (
     <S.Container>
       <Title>{name}</Title>
       <S.Content>
         <S.TypeDiv>
-          <TypeSpan>Grass</TypeSpan>
-          <TypeSpan>Poinson</TypeSpan>
+          {types.map((type) => (
+            <S.TypeSpan key={type.type.name}>{type.type.name}</S.TypeSpan>
+          ))}
         </S.TypeDiv>
         <S.Image src={pokemonImg} />
       </S.Content>
