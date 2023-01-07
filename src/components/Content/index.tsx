@@ -13,21 +13,26 @@ export const Content = () => {
   const { pokemons, page, GetPokemons } = usePokemon();
 
   return (
-    <S.Container>
-      {pokemons?.map((pokemon) => {
-        return (
-          <Card
-            key={pokemon.id}
-            name={pokemon.name}
-            pokemonImg={pokemon.sprites.other.dream_world.front_default}
-            types={pokemon.types}
-          />
-        );
-      })}
-      <button disabled={page - 1 < 1} onClick={() => GetPokemons(page - 1)}>
-        Previous Page
-      </button>
-      <button onClick={() => GetPokemons(page + 1)}>Next Page</button>
-    </S.Container>
+    <>
+      <S.Container>
+        {pokemons?.map((pokemon) => {
+          return (
+            <Card
+              key={pokemon.id}
+              name={pokemon.name}
+              pokemonImg={pokemon.sprites.other.dream_world.front_default}
+              types={pokemon.types}
+            />
+          );
+        })}
+      </S.Container>
+      <S.ButtonsContainer>
+        <button disabled={page - 1 < 1} onClick={() => GetPokemons(page - 1)}>
+          Previous Page
+        </button>
+        <span>{page}</span>
+        <button onClick={() => GetPokemons(page + 1)}>Next Page</button>
+      </S.ButtonsContainer>
+    </>
   );
 };
