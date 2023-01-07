@@ -7,7 +7,7 @@ interface PokemoncontextProps {
 }
 const PokemonContext = createContext({} as PokemonContextType);
 
-export const AuthContextProvider = ({ children }: PokemoncontextProps) => {
+export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
   return (
     <PokemonContext.Provider value={{}}>{children}</PokemonContext.Provider>
   );
