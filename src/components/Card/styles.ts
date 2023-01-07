@@ -38,7 +38,7 @@ export const TypeDiv = styled.div`
 `;
 
 export const Image = styled.img`
-  height: 6rem;
+  height: 7rem;
 `;
 
 export const TypeSpan = styled.span<Primarytype>`
