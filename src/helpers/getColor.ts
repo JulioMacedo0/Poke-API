@@ -16,6 +16,9 @@ export const GetColor = (type: string) => {
     case "normal":
       return `${defaultTheme.skin_pink}`;
       break;
+    case "electric":
+      return `${defaultTheme.yellow}`;
+      break;
 
     default:
       return `${defaultTheme.black}`;
