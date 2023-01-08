@@ -1,4 +1,4 @@
-import { defaultTheme } from "../styles/themes/default";
+import { defaultTheme } from "../../styles/themes/default";
 export const GetColor = (type: string) => {
   switch (type) {
     case "grass":

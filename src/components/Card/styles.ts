@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { GetColor } from "../../helpers/getColor";
+import { GetColor } from "../../helpers/get-color";
 interface Primarytype {
   type: string;
 }
