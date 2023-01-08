@@ -11,6 +11,7 @@ interface PokemonContextType {
   pokemons: Pokemons[];
   page: number;
   GetPokemons: (page: number) => void;
+  isLoading: boolean;
 }
 
 interface PokemoncontextProps {
@@ -45,8 +46,10 @@ interface ArrayPokemons {
 export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
   const [pokemons, setPokemons] = useState<Pokemons[]>([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   const GetPokemons = (page: number) => {
+    setIsLoading(true);
     const limit = 21;
     const offset = (page - 1) * limit;
     const url = `pokemon?offset=${offset}&limit=${limit}`;
@@ -65,6 +68,7 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
           // This is an array of the response data in JSON format
           setPokemons(data);
           setPage(page);
+          setIsLoading(false);
         })
         .catch((error) => {
           // If any of the requests fail, this catch block will be executed
@@ -88,6 +92,7 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
           // This is an array of the response data in JSON format
           console.log(data + " data in then");
           setPokemons(data);
+          setIsLoading(false);
         })
         .catch((error) => {
           // If any of the requests fail, this catch block will be executed
@@ -97,7 +102,7 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
   }, []);
 
   return (
-    <PokemonContext.Provider value={{ pokemons, page, GetPokemons }}>
+    <PokemonContext.Provider value={{ pokemons, page, isLoading, GetPokemons }}>
       {children}
     </PokemonContext.Provider>
   );
