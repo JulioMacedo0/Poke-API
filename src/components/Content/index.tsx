@@ -1,7 +1,18 @@
 import { usePokemon } from "../../context/PokemonContext";
-
 import { Card } from "../Card";
 import * as S from "./styles";
+
+import Lottie from "react-lottie";
+import pokeball from "../../lotties/pokeball.json";
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: pokeball,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 // interface CardsType {
 //   next: string | null;
@@ -10,7 +21,7 @@ import * as S from "./styles";
 // }
 
 export const Content = () => {
-  const { pokemons, page, GetPokemons } = usePokemon();
+  const { pokemons, page, isLoading, GetPokemons } = usePokemon();
 
   return (
     <>
@@ -32,6 +43,11 @@ export const Content = () => {
         </button>
         <span>{page}</span>
         <button onClick={() => GetPokemons(page + 1)}>Next Page</button>
+        {isLoading && (
+          <S.Overlay>
+            <Lottie options={defaultOptions} height={400} width={400} />
+          </S.Overlay>
+        )}
       </S.ButtonsContainer>
     </>
   );
