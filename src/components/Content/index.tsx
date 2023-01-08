@@ -34,7 +34,13 @@ export const Content = () => {
         })}
       </S.Container>
       <S.ButtonsContainer>
-        <button disabled={page - 1 < 1} onClick={() => GetPokemons(page - 1)}>
+        <button
+          disabled={page - 1 < 1}
+          onClick={() => {
+            GetPokemons(page - 1);
+            Ref.current?.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
           Previous Page
         </button>
         <span>{page}</span>
