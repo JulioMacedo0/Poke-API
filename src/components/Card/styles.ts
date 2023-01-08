@@ -26,6 +26,11 @@ export const Content = styled.div`
   align-items: flex-start;
   gap: 0.5rem;
   margin-top: 0.5rem;
+  overflow: hidden;
+  transition: overflow 0.2s;
+  :hover {
+    overflow: visible;
+  }
 `;
 
 export const TypeDiv = styled.div`
