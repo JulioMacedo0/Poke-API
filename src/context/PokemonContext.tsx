@@ -90,7 +90,7 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
         })
         .then((data: Pokemons[]) => {
           // This is an array of the response data in JSON format
-          console.log(data + " data in then");
+          console.log(data[0]);
           setPokemons(data);
           setTimeout(() => setIsLoading(false), 800);
         })
