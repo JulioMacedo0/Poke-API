@@ -1,13 +1,17 @@
 export const defaultTheme = {
+  normal: "#CA6F1E",
   background: "#eaeef2",
   green: "#50ccb0",
+  dark_green: "#196F3D",
   red: "#f57767",
   blue: "#83c6e1",
-  yellow: "#eed388",
+  yellow: "#D4AC0D",
   brown: "#553d2a",
   skin_pink: "#e5cbce",
+  pink: "#FFC0CB",
   title: "#fffaf9",
   black: "#3e4a48",
   grey: "#d1d3d5",
   white: "#ffffff",
+  purple: "#46295A",
 } as const;
