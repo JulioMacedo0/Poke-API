@@ -11,13 +11,22 @@ export const GetColor = (type: string) => {
       return `${defaultTheme.blue}`;
       break;
     case "bug":
-      return `${defaultTheme.brown}`;
+      return `${defaultTheme.dark_green}`;
       break;
     case "normal":
-      return `${defaultTheme.skin_pink}`;
+      return `${defaultTheme.normal}`;
       break;
     case "electric":
       return `${defaultTheme.yellow}`;
+      break;
+    case "poison":
+      return `${defaultTheme.purple}`;
+      break;
+    case "ground":
+      return `${defaultTheme.brown}`;
+      break;
+    case "fairy":
+      return `${defaultTheme.pink}`;
       break;
 
     default:
