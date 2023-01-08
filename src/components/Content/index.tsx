@@ -4,6 +4,7 @@ import * as S from "./styles";
 
 import Lottie from "react-lottie";
 import pokeball from "../../lotties/pokeball.json";
+import { useRef } from "react";
 
 const defaultOptions = {
   loop: true,
@@ -14,18 +15,13 @@ const defaultOptions = {
   },
 };
 
-// interface CardsType {
-//   next: string | null;
-//   previous: string | null;
-//   results: ArrayPokemons[];
-// }
-
 export const Content = () => {
   const { pokemons, page, isLoading, GetPokemons } = usePokemon();
+  const Ref = useRef<HTMLDivElement | null>(null);
 
   return (
     <>
-      <S.Container>
+      <S.Container ref={Ref}>
         {pokemons?.map((pokemon) => {
           return (
             <Card
@@ -42,7 +38,14 @@ export const Content = () => {
           Previous Page
         </button>
         <span>{page}</span>
-        <button onClick={() => GetPokemons(page + 1)}>Next Page</button>
+        <button
+          onClick={() => {
+            GetPokemons(page + 1);
+            Ref.current?.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          Next Page
+        </button>
         {isLoading && (
           <S.Overlay>
             <Lottie options={defaultOptions} height={400} width={400} />
