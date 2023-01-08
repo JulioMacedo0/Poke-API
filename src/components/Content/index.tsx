@@ -54,7 +54,7 @@ export const Content = () => {
         </button>
         {isLoading && (
           <S.Overlay>
-            <Lottie options={defaultOptions} height={400} width={400} />
+            <Lottie options={defaultOptions} height={150} width={150} />
           </S.Overlay>
         )}
       </S.ButtonsContainer>
