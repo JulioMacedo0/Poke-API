@@ -68,7 +68,7 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
           // This is an array of the response data in JSON format
           setPokemons(data);
           setPage(page);
-          setIsLoading(false);
+          setTimeout(() => setIsLoading(false), 800);
         })
         .catch((error) => {
           // If any of the requests fail, this catch block will be executed
@@ -92,7 +92,7 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
           // This is an array of the response data in JSON format
           console.log(data + " data in then");
           setPokemons(data);
-          setIsLoading(false);
+          setTimeout(() => setIsLoading(false), 800);
         })
         .catch((error) => {
           // If any of the requests fail, this catch block will be executed
