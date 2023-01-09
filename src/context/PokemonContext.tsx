@@ -26,6 +26,12 @@ interface Types {
 }
 
 interface Pokemons {
+  id: number;
+  name: string;
+  weight: number;
+  height: number;
+  base_experience: number;
+  types: Types[];
   sprites: {
     other: {
       dream_world: {
@@ -33,9 +39,6 @@ interface Pokemons {
       };
     };
   };
-  name: string;
-  id: number;
-  types: Types[];
 }
 
 interface ArrayPokemons {
@@ -90,7 +93,7 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
         })
         .then((data: Pokemons[]) => {
           // This is an array of the response data in JSON format
-          console.log(data[0]);
+          console.log(data[3]);
           setPokemons(data);
           setTimeout(() => setIsLoading(false), 800);
         })
