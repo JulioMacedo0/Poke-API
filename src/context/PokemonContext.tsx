@@ -24,6 +24,18 @@ interface Types {
     name: string;
   };
 }
+interface statsType {
+  base_stat: number;
+  stat: {
+    name: string;
+  };
+}
+
+interface abilitiesType {
+  ability: {
+    name: string;
+  };
+}
 
 interface Pokemons {
   id: number;
@@ -32,6 +44,8 @@ interface Pokemons {
   height: number;
   base_experience: number;
   types: Types[];
+  stats: statsType[];
+  abilities: abilitiesType[];
   sprites: {
     other: {
       dream_world: {
