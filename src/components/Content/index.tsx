@@ -5,6 +5,7 @@ import * as S from "./styles";
 import Lottie from "react-lottie";
 import pokeball from "../../lotties/pokeball.json";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const defaultOptions = {
   loop: true,
@@ -18,13 +19,14 @@ const defaultOptions = {
 export const Content = () => {
   const { pokemons, page, isLoading, GetPokemons } = usePokemon();
   const Ref = useRef<HTMLDivElement | null>(null);
-
+  const navigate = useNavigate();
   return (
     <>
       <S.Container ref={Ref}>
         {pokemons?.map((pokemon) => {
           return (
             <Card
+              onClick={() => navigate("/pokemon", {})}
               key={pokemon.id}
               name={pokemon.name}
               pokemonImg={pokemon.sprites.other.dream_world.front_default}
