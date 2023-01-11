@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: 70rem;
-  min-height: 100%;
+  height: calc(100vh - 5.3125rem);
   margin: 0 auto;
   padding: 1rem;
   display: flex;
@@ -16,9 +16,9 @@ export const Content = styled.div`
   flex-direction: column;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  padding: 1rem;
+
   width: 100%;
-  height: 85vh;
+  height: 100%;
   background-color: ${(props) => props.theme.green};
   max-width: 872px;
 
@@ -32,11 +32,22 @@ export const Content = styled.div`
     }
   }
   img {
-    margin: 0 auto;
+    position: absolute;
+    bottom: -150px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
     width: 12rem;
   }
 `;
-
+export const Padding = styled.div`
+  position: relative;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+`;
 export const Title = styled.p`
   margin-top: 1rem;
   margin-bottom: 0.5rem;
@@ -62,4 +73,7 @@ export const TypeSpan = styled.span`
   border-radius: 99999px;
 `;
 
-export const PokemonInfo = styled.div``;
+export const PokemonInfo = styled.div`
+  height: 50%;
+  background-color: ${(props) => props.theme.white};
+`;
