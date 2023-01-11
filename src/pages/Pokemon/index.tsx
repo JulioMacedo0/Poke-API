@@ -10,18 +10,21 @@ export const Pokemon = () => {
       <Header />
       <S.Container>
         <S.Content>
-          <header>
-            <Link to="/">
-              <ArrowLeft size={32} />
-            </Link>
-            <Heart size={32} />
-          </header>
-          <S.Title>Bulbassaur</S.Title>
-          <S.TypeContainer>
-            <S.TypeSpan>Grass</S.TypeSpan>
-            <S.TypeSpan>Poison</S.TypeSpan>
-          </S.TypeContainer>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" />
+          <S.Padding>
+            <header>
+              <Link to="/">
+                <ArrowLeft size={32} />
+              </Link>
+              <Heart size={32} />
+            </header>
+            <S.Title>Bulbassaur</S.Title>
+            <S.TypeContainer>
+              <S.TypeSpan>Grass</S.TypeSpan>
+              <S.TypeSpan>Poison</S.TypeSpan>
+            </S.TypeContainer>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" />
+          </S.Padding>
+          <S.PokemonInfo></S.PokemonInfo>
         </S.Content>
       </S.Container>
     </>
