@@ -1,15 +1,30 @@
 import { ArrowLeft, Heart } from "phosphor-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams, useSearchParams } from "react-router-dom";
 import { Header } from "../../components/Header";
-import { Title } from "../../components/StylesComponents/styles";
+
 import * as S from "./styles";
 
+interface Types {
+  type: {
+    name: string;
+  };
+}
+interface UseNavigateProps {
+  state: {
+  name: string;
+  pokemonImg: string;
+  pokemonTypes: Types[]
+}
+}
+
 export const Pokemon = () => {
+const {state} : UseNavigateProps = useLocation()
+  console.log(state)
   return (
     <>
       <Header />
-      <S.Container>
-        <S.Content>
+      <S.Container >
+        <S.Content type={state.pokemonTypes[0].type.name}>
           <S.Padding>
             <header>
               <Link to="/">
@@ -17,12 +32,13 @@ export const Pokemon = () => {
               </Link>
               <Heart size={32} />
             </header>
-            <S.Title>Bulbassaur</S.Title>
-            <S.TypeContainer>
-              <S.TypeSpan>Grass</S.TypeSpan>
-              <S.TypeSpan>Poison</S.TypeSpan>
+            <S.Title>{state.name}</S.Title>
+            <S.TypeContainer >
+              {
+                state.pokemonTypes.map( type => <S.TypeSpan type={state.pokemonTypes[0].type.name}>{type.type.name}</S.TypeSpan>)
+              }
             </S.TypeContainer>
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" />
+            <img src={state.pokemonImg} />
           </S.Padding>
           <S.PokemonInfo></S.PokemonInfo>
         </S.Content>
