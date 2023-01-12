@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import { GetColor } from "../../helpers/get-color";
+interface Primarytype {
+  type: string;
+}
 
 export const Container = styled.div`
   max-width: 70rem;
@@ -11,7 +15,7 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<Primarytype>`
   display: flex;
   flex-direction: column;
   border-top-left-radius: 20px;
@@ -19,7 +23,7 @@ export const Content = styled.div`
 
   width: 100%;
   height: 100%;
-  background-color: ${(props) => props.theme.green};
+  background-color:  ${(props) => GetColor(props.type)};
   max-width: 872px;
 
   header {
@@ -63,9 +67,9 @@ export const TypeContainer = styled.div`
   margin-bottom: 3rem;
 `;
 
-export const TypeSpan = styled.span`
+export const TypeSpan = styled.span<Primarytype>`
   color: ${(props) => props.theme["title"]};
-  background-color: ${(props) => props.theme.green};
+  background-color:  ${(props) => GetColor(props.type)};
 
   padding: 0.2rem 1.2rem;
   font-size: 0.75rem;
