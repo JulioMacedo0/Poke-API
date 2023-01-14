@@ -2,6 +2,7 @@ import { ArrowLeft, Heart } from "phosphor-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Header } from "../../components/Header";
+import { ProgressBar } from "../../components/ProgressBar";
 
 import * as S from "./styles";
 
@@ -73,30 +74,37 @@ const [tab, setTab] = useState(1)
               <S.TabRow>
                   <S.TabTitle>HP </S.TabTitle>
                   <S.TabText>45</S.TabText>
+                  <ProgressBar maxValue={100} currentValue={45}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Attack </S.TabTitle>
                   <S.TabText>60</S.TabText>
+                  <ProgressBar maxValue={100} currentValue={60}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Defense </S.TabTitle>
                   <S.TabText>48</S.TabText>
+                  <ProgressBar maxValue={100} currentValue={48}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Sp. Atk </S.TabTitle>
                   <S.TabText>65</S.TabText>
+                  <ProgressBar maxValue={100} currentValue={65}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Sp. Def </S.TabTitle>
                   <S.TabText>65</S.TabText>
+                  <ProgressBar maxValue={100} currentValue={65}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Speed </S.TabTitle>
                   <S.TabText>45</S.TabText>
+                  <ProgressBar maxValue={100} currentValue={45}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Total </S.TabTitle>
                   <S.TabText>317</S.TabText>
+                  <ProgressBar maxValue={1000} currentValue={317}/>
                 </S.TabRow>
               </S.TabContent>
 
