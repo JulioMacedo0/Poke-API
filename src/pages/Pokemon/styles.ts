@@ -47,6 +47,7 @@ export const Content = styled.div<Primarytype>`
     right: 0px;
     margin: auto;
     width: 10rem;
+    height: 10rem;
   }
 `;
 export const Padding = styled.div`
@@ -142,7 +143,7 @@ display: ${props => props.active ? "block" : "none"} ;
 export const TabRow = styled.div`
 display: flex;
 margin: 1rem 0;
-justify-content: space-around;
+justify-content: space-between;
 
 `
 
@@ -152,6 +153,7 @@ export const TabTitle = styled.p`
 `
 
 export const TabText = styled.p`
+
  color: ${(props) =>  props.theme.dark_black};
 
 `
