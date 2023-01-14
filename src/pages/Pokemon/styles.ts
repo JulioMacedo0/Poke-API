@@ -1,7 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { GetColor } from "../../helpers/get-color";
 interface Primarytype {
   type: string;
+}
+
+interface TabProps {
+  active: boolean
 }
 
 export const Container = styled.div`
@@ -37,17 +41,17 @@ export const Content = styled.div<Primarytype>`
   }
   img {
     position: absolute;
-    bottom: -18rem;
+    bottom: -14rem;
     top: 0px;
     left: 0px;
     right: 0px;
     margin: auto;
-    width: 12rem;
+    width: 10rem;
   }
 `;
 export const Padding = styled.div`
   position: relative;
-  height: 50%;
+  height: 40%;
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -78,8 +82,76 @@ export const TypeSpan = styled.span<Primarytype>`
 `;
 
 export const PokemonInfo = styled.div`
-  border-top-left-radius: 3rem;
-  border-top-right-radius: 3rem;
-  height: 50%;
+  border-top-left-radius: 2.5rem;
+  border-top-right-radius: 2.5rem;
+  height: 60%;
   background-color: ${(props) => props.theme.white};
 `;
+
+export const TabContainer = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  padding: 1rem;
+  flex-direction: column;
+
+`
+
+export const TabHeader= styled.div`
+margin: 0 auto;
+width: 100%;
+max-width: 28.125rem;
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+margin-bottom: 1.5rem;
+
+`
+
+export const TabHeaderTitle = styled.div<TabProps>`
+  color: ${(props) => props.active ? props.theme.dark_black : props.theme.grey};
+  font-weight: bold;
+  padding-bottom: 1rem;
+  border-bottom: ${(props) => props.active ? "1.5px solid blue" : "1.5px solid transprent"} ;
+  transition: scale 0.2s;
+
+
+  ${(props) => !props.active && css`
+    :hover {
+      cursor: pointer;
+      opacity: 0.8;
+      scale: 1.1;
+    }
+  `}
+
+
+`
+
+
+export const TabContent = styled.div<TabProps>`
+overflow: auto;
+display: flex;
+flex-direction: column;
+height: 100%;
+margin: 0 auto;
+width: 100%;
+max-width: 28.125rem;
+display: ${props => props.active ? "block" : "none"} ;
+`
+export const TabRow = styled.div`
+display: flex;
+margin: 1rem 0;
+justify-content: space-around;
+
+`
+
+export const TabTitle = styled.p`
+ color: ${(props) =>  props.theme.grey};
+
+`
+
+export const TabText = styled.p`
+ color: ${(props) =>  props.theme.dark_black};
+
+`
