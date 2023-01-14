@@ -10,9 +10,13 @@ export const defaultTheme = {
   skin_pink: "#e5cbce",
   pink: "#FFC0CB",
   title: "#fffaf9",
+
   black: "#3e4a48",
   dark_black: "#000",
+
   grey: "#a0a0a0",
+  light_grey : "#d3d3d3",
+
   white: "#ffffff",
   purple: "#46295A",
 } as const;
