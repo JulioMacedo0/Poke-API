@@ -37,7 +37,7 @@ export const Content = styled.div<Primarytype>`
   }
   img {
     position: absolute;
-    bottom: -150px;
+    bottom: -18rem;
     top: 0px;
     left: 0px;
     right: 0px;
@@ -78,6 +78,8 @@ export const TypeSpan = styled.span<Primarytype>`
 `;
 
 export const PokemonInfo = styled.div`
+  border-top-left-radius: 3rem;
+  border-top-right-radius: 3rem;
   height: 50%;
   background-color: ${(props) => props.theme.white};
 `;
