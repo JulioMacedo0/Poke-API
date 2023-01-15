@@ -32,6 +32,11 @@ export const Content = () => {
                 name: pokemon.name,
                 pokemonImg: pokemon.sprites.other.dream_world.front_default,
                 pokemonTypes: pokemon.types,
+                stats: pokemon.stats,
+                height: pokemon.height,
+                weight: pokemon.weight,
+                abilities: pokemon.abilities,
+                base_experience: pokemon.base_experience,
 
               }})}
               key={pokemon.id}
