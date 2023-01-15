@@ -11,17 +11,40 @@ interface Types {
     name: string;
   };
 }
+
+interface statsType {
+  base_stat: number;
+  stat: {
+    name: string;
+  };
+}
+
+interface abilitiesType {
+  ability: {
+    name: string;
+  };
+}
+
+
 interface UseNavigateProps {
   state: {
   name: string;
   pokemonImg: string;
-  pokemonTypes: Types[]
+  pokemonTypes: Types[];
+  height: string
+  weight: string;
+  abilities: abilitiesType[];
+  stats: statsType[];
+  base_experience: number;
   }
 }
 
 export const Pokemon = () => {
 const {state} : UseNavigateProps = useLocation()
 const [tab, setTab] = useState(1)
+
+const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator + currenValue.base_stat, 0)
+const abilities = state.abilities.map( Abilities => `${Abilities.ability.name}, `)
   return (
     <>
       <Header />
@@ -53,58 +76,58 @@ const [tab, setTab] = useState(1)
 
               <S.TabContent active={tab == 1}>
                 <S.TabRow>
-                  <S.TabTitle>Species </S.TabTitle>
-                  <S.TabText>Seed</S.TabText>
+                  <S.TabTitle>Base Experience </S.TabTitle>
+                  <S.TabText>{state.base_experience}</S.TabText>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Height </S.TabTitle>
-                  <S.TabText>2'3.6*(0.70cm)</S.TabText>
+                  <S.TabText>{state.height}</S.TabText>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Weight </S.TabTitle>
-                  <S.TabText>15.2 lbs (6.9kg)</S.TabText>
+                  <S.TabText>{state.weight}</S.TabText>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Abilities </S.TabTitle>
-                  <S.TabText>Overgrow, Cholprophyl</S.TabText>
+                  <S.TabText>{state.abilities.map( Abilities => Abilities.ability.name).join(', ')}</S.TabText>
                 </S.TabRow>
               </S.TabContent>
 
               <S.TabContent active={tab == 2}>
               <S.TabRow>
                   <S.TabTitle>HP </S.TabTitle>
-                  <S.TabText>45</S.TabText>
-                  <ProgressBar maxValue={100} currentValue={45}/>
+                  <S.TabText>{state.stats[0].base_stat}</S.TabText>
+                  <ProgressBar maxValue={100} currentValue={state.stats[0].base_stat}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Attack </S.TabTitle>
-                  <S.TabText>60</S.TabText>
-                  <ProgressBar maxValue={100} currentValue={60}/>
+                  <S.TabText>{state.stats[1].base_stat}</S.TabText>
+                  <ProgressBar maxValue={100} currentValue={state.stats[1].base_stat}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Defense </S.TabTitle>
-                  <S.TabText>48</S.TabText>
-                  <ProgressBar maxValue={100} currentValue={48}/>
+                  <S.TabText>{state.stats[2].base_stat}</S.TabText>
+                  <ProgressBar maxValue={100} currentValue={state.stats[2].base_stat}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Sp. Atk </S.TabTitle>
-                  <S.TabText>65</S.TabText>
-                  <ProgressBar maxValue={100} currentValue={65}/>
+                  <S.TabText>{state.stats[3].base_stat}</S.TabText>
+                  <ProgressBar maxValue={100} currentValue={state.stats[3].base_stat}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Sp. Def </S.TabTitle>
-                  <S.TabText>65</S.TabText>
-                  <ProgressBar maxValue={100} currentValue={65}/>
+                  <S.TabText>{state.stats[4].base_stat}</S.TabText>
+                  <ProgressBar maxValue={100} currentValue={state.stats[4].base_stat}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Speed </S.TabTitle>
-                  <S.TabText>45</S.TabText>
-                  <ProgressBar maxValue={100} currentValue={45}/>
+                  <S.TabText>{state.stats[5].base_stat}</S.TabText>
+                  <ProgressBar maxValue={100} currentValue={state.stats[5].base_stat}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Total </S.TabTitle>
-                  <S.TabText>317</S.TabText>
-                  <ProgressBar maxValue={1000} currentValue={317}/>
+                  <S.TabText>{totalStats}</S.TabText>
+                  <ProgressBar maxValue={1000} currentValue={totalStats}/>
                 </S.TabRow>
               </S.TabContent>
 
