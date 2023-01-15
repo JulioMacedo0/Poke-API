@@ -141,9 +141,11 @@ max-width: 28.125rem;
 display: ${props => props.active ? "block" : "none"} ;
 `
 export const TabRow = styled.div`
-display: flex;
+display: grid;
 margin: 1rem 0;
-justify-content: space-between;
+grid-template-columns: 1fr 1fr 1fr;
+justify-content: center;
+align-items: center;
 
 `
 
