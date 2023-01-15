@@ -95,27 +95,7 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
   };
 
   useEffect(() => {
-    api.get("/pokemon?offset=0&limit=21").then((response) => {
-      const requests = response.data.results.map((obj: ArrayPokemons) =>
-        fetch(obj.url)
-      );
-
-      Promise.all(requests)
-        .then((responses) => {
-          // All responses are resolved successfully
-          return Promise.all(responses.map((response) => response.json()));
-        })
-        .then((data: Pokemons[]) => {
-          // This is an array of the response data in JSON format
-          console.log(data[3]);
-          setPokemons(data);
-          setTimeout(() => setIsLoading(false), 800);
-        })
-        .catch((error) => {
-          // If any of the requests fail, this catch block will be executed
-          console.error(error);
-        });
-    });
+ GetPokemons(1)
   }, []);
 
   return (
