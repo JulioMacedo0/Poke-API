@@ -6,7 +6,7 @@ interface ProgressBarProps {
 }
 
 export const ProgressBar = styled.div`
-  width: 5rem;
+  width: 100%;
   height: 0.45rem;
   background: ${props => props.theme.light_grey};
   position: relative;
