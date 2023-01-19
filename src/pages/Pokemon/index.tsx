@@ -1,5 +1,5 @@
 import { ArrowLeft, Heart } from "phosphor-react";
-import { useState } from "react";
+import {  useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { ProgressBar } from "../../components/ProgressBar";
@@ -44,7 +44,7 @@ const {state} : UseNavigateProps = useLocation()
 const [tab, setTab] = useState(1)
 
 const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator + currenValue.base_stat, 0)
-const abilities = state.abilities.map( Abilities => `${Abilities.ability.name}, `)
+
   return (
     <>
       <Header />
