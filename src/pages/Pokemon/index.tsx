@@ -97,32 +97,32 @@ const abilities = state.abilities.map( Abilities => `${Abilities.ability.name}, 
               <S.TabRow>
                   <S.TabTitle>HP </S.TabTitle>
                   <S.TabText>{state.stats[0].base_stat}</S.TabText>
-                  <ProgressBar maxValue={100} currentValue={state.stats[0].base_stat}/>
+                  <ProgressBar maxValue={200} currentValue={state.stats[0].base_stat}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Attack </S.TabTitle>
                   <S.TabText>{state.stats[1].base_stat}</S.TabText>
-                  <ProgressBar maxValue={100} currentValue={state.stats[1].base_stat}/>
+                  <ProgressBar maxValue={200} currentValue={state.stats[1].base_stat}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Defense </S.TabTitle>
                   <S.TabText>{state.stats[2].base_stat}</S.TabText>
-                  <ProgressBar maxValue={100} currentValue={state.stats[2].base_stat}/>
+                  <ProgressBar maxValue={200} currentValue={state.stats[2].base_stat}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Sp. Atk </S.TabTitle>
                   <S.TabText>{state.stats[3].base_stat}</S.TabText>
-                  <ProgressBar maxValue={100} currentValue={state.stats[3].base_stat}/>
+                  <ProgressBar maxValue={200} currentValue={state.stats[3].base_stat}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Sp. Def </S.TabTitle>
                   <S.TabText>{state.stats[4].base_stat}</S.TabText>
-                  <ProgressBar maxValue={100} currentValue={state.stats[4].base_stat}/>
+                  <ProgressBar maxValue={200} currentValue={state.stats[4].base_stat}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Speed </S.TabTitle>
                   <S.TabText>{state.stats[5].base_stat}</S.TabText>
-                  <ProgressBar maxValue={100} currentValue={state.stats[5].base_stat}/>
+                  <ProgressBar maxValue={200} currentValue={state.stats[5].base_stat}/>
                 </S.TabRow>
                 <S.TabRow>
                   <S.TabTitle>Total </S.TabTitle>
