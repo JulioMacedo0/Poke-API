@@ -25,6 +25,14 @@ interface abilitiesType {
   };
 }
 
+interface movesType {
+
+  move: {
+    name: string
+  }
+
+}
+
 
 interface UseNavigateProps {
   state: {
@@ -36,6 +44,7 @@ interface UseNavigateProps {
   abilities: abilitiesType[];
   stats: statsType[];
   base_experience: number;
+  moves: movesType[];
   }
 }
 
@@ -60,7 +69,7 @@ const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator 
             <S.Title>{state.name}</S.Title>
             <S.TypeContainer >
               {
-                state.pokemonTypes.map( type => <S.TypeSpan type={state.pokemonTypes[0].type.name}>{type.type.name}</S.TypeSpan>)
+                state.pokemonTypes.map( type => <S.TypeSpan key={type.type.name} type={state.pokemonTypes[0].type.name}>{type.type.name}</S.TypeSpan>)
               }
             </S.TypeContainer>
             <img src={state.pokemonImg} />
@@ -136,7 +145,7 @@ const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator 
               </S.TabContent>
 
               <S.TabContent active={tab == 4}>
-                Tab 4
+                {state.moves.map( move => <S.TabText key={move.move.name}>{move.move.name}</S.TabText>)}
               </S.TabContent>
 
             </S.TabContainer>
