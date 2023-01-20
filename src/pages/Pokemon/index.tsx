@@ -64,7 +64,7 @@ const [descriptionMoves, setDescriptionMoves] = useState<dercriptionMovesType[]>
 const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator + currenValue.base_stat, 0)
 
  const getPokemonMoveDescription = async ()  =>  {
-  const promisses =  await state.moves.map(url => fetch( url.move.url).then(promisse => promisse));
+  const promisses =  await state.moves.map(url =>  fetch( url.move.url));
 
   Promise.all(promisses)
   .then((responses) => {
