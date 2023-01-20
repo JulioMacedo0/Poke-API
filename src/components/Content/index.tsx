@@ -26,6 +26,7 @@ export const Content = () => {
     <>
       <S.Container ref={Ref}>
         {pokemons?.map((pokemon) => {
+
           return (
             <Card
               onClick={() => navigate(`/pokemon`, {state: {
@@ -37,7 +38,7 @@ export const Content = () => {
                 weight: pokemon.weight,
                 abilities: pokemon.abilities,
                 base_experience: pokemon.base_experience,
-
+                moves: pokemon.moves
               }})}
               key={pokemon.id}
               name={pokemon.name}
