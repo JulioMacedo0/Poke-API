@@ -28,7 +28,8 @@ interface abilitiesType {
 interface movesType {
 
   move: {
-    name: string
+    name: string;
+    url: string;
   }
 
 }
@@ -145,7 +146,16 @@ const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator 
               </S.TabContent>
 
               <S.TabContent active={tab == 4}>
-                {state.moves.map( move => <S.TabText key={move.move.name}>{move.move.name}</S.TabText>)}
+
+                {state.moves.map(  move =>  {
+                  return (
+                    <S.TabRow key={move.move.name}>
+                    <S.TabTitle>{move.move.name}</S.TabTitle>
+                    <S.TabText >{move.move.url}</S.TabText>
+                    </S.TabRow>
+                  )
+                })}
+
               </S.TabContent>
 
             </S.TabContainer>

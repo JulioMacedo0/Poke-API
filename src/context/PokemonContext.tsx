@@ -40,7 +40,8 @@ interface abilitiesType {
 interface movesType {
 
   move: {
-    name: string
+    name: string;
+    url: string;
   }
 
 }
