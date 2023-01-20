@@ -8,6 +8,10 @@ interface TabProps {
   active: boolean
 }
 
+interface RowProps {
+  columns: number
+}
+
 export const Container = styled.div`
   max-width: 70rem;
   height: calc(100vh - 5.3125rem);
@@ -140,10 +144,10 @@ width: 100%;
 max-width: 28.125rem;
 display: ${props => props.active ? "block" : "none"} ;
 `
-export const TabRow = styled.div`
+export const TabRow = styled.div<RowProps>`
 display: grid;
 margin: 1rem 0;
-grid-template-columns: 1fr 1fr 1fr;
+grid-template-columns: repeat(${props => props.columns}, 1fr);
 justify-content: center;
 align-items: center;
 

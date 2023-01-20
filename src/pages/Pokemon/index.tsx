@@ -116,56 +116,56 @@ const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator 
               </S.TabHeader>
 
               <S.TabContent active={tab == 1}>
-                <S.TabRow>
+                <S.TabRow columns={2}>
                   <S.TabTitle>Base Experience </S.TabTitle>
                   <S.TabText>{state.base_experience}</S.TabText>
                 </S.TabRow>
-                <S.TabRow>
+                <S.TabRow columns={2}>
                   <S.TabTitle>Height </S.TabTitle>
                   <S.TabText>{state.height}</S.TabText>
                 </S.TabRow>
-                <S.TabRow>
+                <S.TabRow columns={2}>
                   <S.TabTitle>Weight </S.TabTitle>
                   <S.TabText>{state.weight}</S.TabText>
                 </S.TabRow>
-                <S.TabRow>
+                <S.TabRow columns={2}>
                   <S.TabTitle>Abilities </S.TabTitle>
                   <S.TabText>{state.abilities.map( Abilities => Abilities.ability.name).join(', ')}</S.TabText>
                 </S.TabRow>
               </S.TabContent>
 
               <S.TabContent active={tab == 2}>
-              <S.TabRow>
+              <S.TabRow columns={3}>
                   <S.TabTitle>HP </S.TabTitle>
                   <S.TabText>{state.stats[0].base_stat}</S.TabText>
                   <ProgressBar maxValue={200} currentValue={state.stats[0].base_stat}/>
                 </S.TabRow>
-                <S.TabRow>
+                <S.TabRow columns={3}>
                   <S.TabTitle>Attack </S.TabTitle>
                   <S.TabText>{state.stats[1].base_stat}</S.TabText>
                   <ProgressBar maxValue={200} currentValue={state.stats[1].base_stat}/>
                 </S.TabRow>
-                <S.TabRow>
+                <S.TabRow columns={3}>
                   <S.TabTitle>Defense </S.TabTitle>
                   <S.TabText>{state.stats[2].base_stat}</S.TabText>
                   <ProgressBar maxValue={200} currentValue={state.stats[2].base_stat}/>
                 </S.TabRow>
-                <S.TabRow>
+                <S.TabRow columns={3}>
                   <S.TabTitle>Sp. Atk </S.TabTitle>
                   <S.TabText>{state.stats[3].base_stat}</S.TabText>
                   <ProgressBar maxValue={200} currentValue={state.stats[3].base_stat}/>
                 </S.TabRow>
-                <S.TabRow>
+                <S.TabRow columns={3}>
                   <S.TabTitle>Sp. Def </S.TabTitle>
                   <S.TabText>{state.stats[4].base_stat}</S.TabText>
                   <ProgressBar maxValue={200} currentValue={state.stats[4].base_stat}/>
                 </S.TabRow>
-                <S.TabRow>
+                <S.TabRow columns={3}>
                   <S.TabTitle>Speed </S.TabTitle>
                   <S.TabText>{state.stats[5].base_stat}</S.TabText>
                   <ProgressBar maxValue={200} currentValue={state.stats[5].base_stat}/>
                 </S.TabRow>
-                <S.TabRow>
+                <S.TabRow columns={3}>
                   <S.TabTitle>Total </S.TabTitle>
                   <S.TabText>{totalStats}</S.TabText>
                   <ProgressBar maxValue={1000} currentValue={totalStats}/>
@@ -181,7 +181,7 @@ const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator 
                 {state.moves.map(  (move, index) =>  {
                   console.log(descriptionMoves[index])
                   return (
-                    <S.TabRow key={move.move.name}>
+                    <S.TabRow key={move.move.name} columns={2}>
                     <S.TabTitle>{move.move.name}</S.TabTitle>
                     <S.TabText >{descriptionMoves[index]?.flavor_text_entries[0]?.flavor_text}</S.TabText>
                     </S.TabRow>
