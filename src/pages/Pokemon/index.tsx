@@ -1,5 +1,5 @@
 import { ArrowLeft, Heart } from "phosphor-react";
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { ProgressBar } from "../../components/ProgressBar";
@@ -49,11 +49,42 @@ interface UseNavigateProps {
   }
 }
 
+interface flavorText {
+  flavor_text: string;
+}
+
+interface dercriptionMovesType {
+  flavor_text_entries: flavorText[];
+}
+
 export const Pokemon = () => {
 const {state} : UseNavigateProps = useLocation()
 const [tab, setTab] = useState(1)
-
+const [descriptionMoves, setDescriptionMoves] = useState<dercriptionMovesType[]>([])
 const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator + currenValue.base_stat, 0)
+
+ const getPokemonMoveDescription = async ()  =>  {
+  const promisses =  await state.moves.map(url => fetch( url.move.url).then(promisse => promisse));
+
+  Promise.all(promisses)
+  .then((responses) => {
+
+    return Promise.all(responses.map((response) => response.json()));
+
+  }).then((result: dercriptionMovesType[]) => {
+    setDescriptionMoves(result)
+  })
+   .catch((error) => {
+    console.error(error);
+  });
+ }
+
+
+ useEffect(()=> {
+  getPokemonMoveDescription()
+ }, [])
+
+
 
   return (
     <>
@@ -147,11 +178,12 @@ const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator 
 
               <S.TabContent active={tab == 4}>
 
-                {state.moves.map(  move =>  {
+                {state.moves.map(  (move, index) =>  {
+                  console.log(descriptionMoves[index])
                   return (
                     <S.TabRow key={move.move.name}>
                     <S.TabTitle>{move.move.name}</S.TabTitle>
-                    <S.TabText >{move.move.url}</S.TabText>
+                    <S.TabText >{descriptionMoves[index]?.flavor_text_entries[0]?.flavor_text}</S.TabText>
                     </S.TabRow>
                   )
                 })}
