@@ -37,6 +37,14 @@ interface abilitiesType {
   };
 }
 
+interface movesType {
+
+  move: {
+    name: string
+  }
+
+}
+
 interface Pokemons {
   id: number;
   name: string;
@@ -46,6 +54,7 @@ interface Pokemons {
   types: Types[];
   stats: statsType[];
   abilities: abilitiesType[];
+  moves: movesType[];
   sprites: {
     other: {
       dream_world: {
@@ -65,6 +74,7 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
+
   const GetPokemons = (page: number) => {
     setIsLoading(true);
     const limit = 21;
@@ -72,8 +82,9 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
     const url = `pokemon?offset=${offset}&limit=${limit}`;
 
     api.get(`/${url}`).then((response) => {
-      const requests = response.data.results.map((obj: ArrayPokemons) =>
-        fetch(obj.url)
+      const requests = response.data.results.map((obj: ArrayPokemons) =>{
+        return fetch(obj.url)
+      }
       );
 
       Promise.all(requests)
