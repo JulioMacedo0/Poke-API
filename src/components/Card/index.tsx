@@ -1,6 +1,6 @@
 import { Title } from "../StylesComponents/styles";
 import * as S from "./styles";
-
+import {memo} from 'react'
 interface Types {
   type: {
     name: string;
@@ -14,7 +14,7 @@ interface CardProps {
   onClick: () => void;
 }
 
-export const Card = ({ name, pokemonImg, types, onClick }: CardProps) => {
+ export const Card = memo(({ name, pokemonImg, types, onClick }: CardProps) => {
   return (
     <S.Container type={types[0].type.name} onClick={onClick}>
       <Title>{name}</Title>
@@ -30,4 +30,5 @@ export const Card = ({ name, pokemonImg, types, onClick }: CardProps) => {
       </S.Content>
     </S.Container>
   );
-};
+});
+
