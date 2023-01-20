@@ -143,6 +143,27 @@ margin: 0 auto;
 width: 100%;
 max-width: 28.125rem;
 display: ${props => props.active ? "block" : "none"} ;
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 `
 export const TabRow = styled.div<RowProps>`
 display: grid;
