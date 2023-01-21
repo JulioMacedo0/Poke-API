@@ -1,6 +1,7 @@
 import { ArrowLeft, Heart } from "phosphor-react";
 import {  useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { AboutCard } from "../../components/AboutCard";
 import { Header } from "../../components/Header";
 import { ProgressBar } from "../../components/ProgressBar";
 
@@ -46,6 +47,10 @@ interface UseNavigateProps {
   stats: statsType[];
   base_experience: number;
   moves: movesType[];
+  species: {
+    name: string,
+    url: string,
+  }
   }
 }
 
@@ -57,11 +62,42 @@ interface dercriptionMovesType {
   flavor_text_entries: flavorText[];
 }
 
+interface eggGroupsType{
+  name: string,
+  url: string,
+}
+interface AboutPokemonype {
+  evolution_chain: {
+    url: string,
+  }
+  flavor_text_entries: flavorText[],
+  egg_groups: eggGroupsType[],
+  evolves_from_species: string | null,
+  color: {
+    name: string,
+    url: string,
+  }
+
+}
+
+
 export const Pokemon = () => {
+
 const {state} : UseNavigateProps = useLocation()
 const [tab, setTab] = useState(1)
 const [descriptionMoves, setDescriptionMoves] = useState<dercriptionMovesType[]>([])
+const [aboutPokemon ,setAboutPokemon] = useState<AboutPokemonype>({} as AboutPokemonype)
+
 const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator + currenValue.base_stat, 0)
+
+
+
+const getFlavorsTexts = async (url : string) => {
+  const aboutPokemon = await fetch(url).then(
+    (result )=> result.json()
+  )
+  setAboutPokemon(aboutPokemon)
+}
 
  const getPokemonMoveDescription = async ()  =>  {
   const promisses =  await state.moves.map(url =>  fetch( url.move.url));
@@ -82,6 +118,7 @@ const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator 
 
  useEffect(()=> {
   getPokemonMoveDescription()
+  getFlavorsTexts(state.species.url)
  }, [])
 
 
@@ -116,6 +153,7 @@ const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator 
               </S.TabHeader>
 
               <S.TabContent active={tab == 1}>
+              <AboutCard text={aboutPokemon.flavor_text_entries[0].flavor_text}/>
                 <S.TabRow columns={2}>
                   <S.TabTitle>Base Experience </S.TabTitle>
                   <S.TabText>{state.base_experience}</S.TabText>
@@ -179,7 +217,6 @@ const totalStats = state.stats.reduce( (accmulator , currenValue) => accmulator 
               <S.TabContent active={tab == 4}>
 
                 {state.moves.map(  (move, index) =>  {
-                  console.log(descriptionMoves[index])
                   return (
                     <S.TabRow key={move.move.name} columns={2}>
                     <S.TabTitle>{move.move.name}</S.TabTitle>
