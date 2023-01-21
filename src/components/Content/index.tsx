@@ -22,11 +22,12 @@ export const Content = () => {
   const { pokemons, page, isLoading, GetPokemons } = usePokemon();
   const Ref = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
+
+
   return (
     <>
       <S.Container ref={Ref}>
         {pokemons?.map((pokemon) => {
-
           return (
             <Card
               onClick={() => navigate(`/pokemon`, {state: {
@@ -38,7 +39,8 @@ export const Content = () => {
                 weight: pokemon.weight,
                 abilities: pokemon.abilities,
                 base_experience: pokemon.base_experience,
-                moves: pokemon.moves
+                moves: pokemon.moves,
+                species: pokemon.species
               }})}
               key={pokemon.id}
               name={pokemon.name}
