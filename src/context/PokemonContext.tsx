@@ -46,7 +46,7 @@ interface movesType {
 
 }
 
-interface Pokemons {
+export interface Pokemons {
   id: number;
   name: string;
   weight: number;
@@ -56,6 +56,10 @@ interface Pokemons {
   stats: statsType[];
   abilities: abilitiesType[];
   moves: movesType[];
+  species: {
+    name: string,
+    url: string,
+  }
   sprites: {
     other: {
       dream_world: {
