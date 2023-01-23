@@ -153,7 +153,10 @@ const getFlavorsTexts = async (url : string) => {
               </S.TabHeader>
 
               <S.TabContent active={tab == 1}>
-              <AboutCard text={aboutPokemon.flavor_text_entries[0].flavor_text}/>
+                {
+                aboutPokemon.flavor_text_entries ?   <AboutCard text={`${aboutPokemon?.flavor_text_entries[0]?.flavor_text}`}/> : ''
+                }
+
                 <S.TabRow columns={2}>
                   <S.TabTitle>Base Experience </S.TabTitle>
                   <S.TabText>{state.base_experience}</S.TabText>
