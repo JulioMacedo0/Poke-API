@@ -72,7 +72,10 @@ interface AboutPokemonype {
   }
   flavor_text_entries: flavorText[],
   egg_groups: eggGroupsType[],
-  evolves_from_species: string | null,
+  evolves_from_species: {
+    name: string,
+    url: string,
+  },
   color: {
     name: string,
     url: string,
@@ -120,7 +123,6 @@ const getFlavorsTexts = async (url : string) => {
   getPokemonMoveDescription()
   getFlavorsTexts(state.species.url)
  }, [])
-
 
 
   return (
@@ -172,6 +174,18 @@ const getFlavorsTexts = async (url : string) => {
                 <S.TabRow columns={2}>
                   <S.TabTitle>Abilities </S.TabTitle>
                   <S.TabText>{state.abilities.map( Abilities => Abilities.ability.name).join(', ')}</S.TabText>
+                </S.TabRow>
+                <S.TabRow columns={2}>
+                  <S.TabTitle>Evolves from </S.TabTitle>
+                  <S.TabText>{aboutPokemon?.evolves_from_species?.name ?? 'Nobody'}</S.TabText>
+                </S.TabRow>
+                <S.TabRow columns={2}>
+                  <S.TabTitle>Color </S.TabTitle>
+                  <S.TabText>{aboutPokemon?.color?.name ?? ''}</S.TabText>
+                </S.TabRow>
+                <S.TabRow columns={2}>
+                  <S.TabTitle>Egg Groups </S.TabTitle>
+                  <S.TabText>{aboutPokemon?.egg_groups?.map(eggGroup => eggGroup.name).join(', ')}</S.TabText>
                 </S.TabRow>
               </S.TabContent>
 
