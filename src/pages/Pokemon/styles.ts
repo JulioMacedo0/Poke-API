@@ -21,6 +21,8 @@ export const Container = styled.div`
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
+
+
 `;
 
 export const Content = styled.div<Primarytype>`
@@ -67,6 +69,10 @@ export const Title = styled.p`
   color: ${(props) => props.theme["title"]};
   font-size: 2.5rem;
   font-weight: bold;
+
+  @media (max-width: 375px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const TypeContainer = styled.div`
