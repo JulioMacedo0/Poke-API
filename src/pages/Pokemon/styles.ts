@@ -61,18 +61,16 @@ export const Content = styled.div<Primarytype>`
   }
   img {
     position: absolute;
-    bottom: 0px;
-    top: -10rem;
-    left: 0px;
-    right: 0px;
-    margin: auto;
     width: 8rem;
     height: 8rem;
+    left: 0px;
+    right: 0px;
+    bottom: -1.5rem;
+    margin: 0 auto;
 
     @media (max-width: 450px) {
-      top: -2rem;
       width: 7rem;
-    height: 7rem
+      height: 7rem
   }
   }
 `;
