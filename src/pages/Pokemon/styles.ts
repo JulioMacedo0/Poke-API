@@ -14,16 +14,19 @@ interface RowProps {
 
 export const Container = styled.div`
   max-width: 70rem;
-  height: calc(100vh - 5.3125rem);
+  height: calc(100vh - 1rem);
   margin: 0 auto;
-  padding: 1rem;
+  margin-top: 1rem;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
 
+  overflow-y: hidden;
+
   @media (max-width: 450px) {
     padding: 0;
+    height: 100vh;
   }
 `;
 
