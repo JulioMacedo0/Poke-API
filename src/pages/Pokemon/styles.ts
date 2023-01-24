@@ -25,8 +25,9 @@ export const Container = styled.div`
   overflow-y: hidden;
 
   @media (max-width: 450px) {
-    padding: 0;
+    padding: 0rem;
     height: 100vh;
+    margin-top: 0rem;
   }
 `;
 
