@@ -127,7 +127,6 @@ const getFlavorsTexts = async (url : string) => {
 
   return (
     <>
-      <Header />
       <S.Container >
 
         <S.Content type={state.pokemonTypes[0].type.name}>
