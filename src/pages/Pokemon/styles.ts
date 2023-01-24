@@ -22,7 +22,9 @@ export const Container = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 
-
+  @media (max-width: 450px) {
+    padding: 0;
+  }
 `;
 
 export const Content = styled.div<Primarytype>`
@@ -34,7 +36,13 @@ export const Content = styled.div<Primarytype>`
   width: 100%;
   height: 100%;
   background-color:  ${(props) => GetColor(props.type)};
-  max-width: 872px;
+  max-width: 54.5rem;
+
+  @media (max-width: 450px) {
+    padding: 0;
+    border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  }
 
   header {
     margin-top: 1.5rem;
@@ -44,16 +52,28 @@ export const Content = styled.div<Primarytype>`
     svg {
       color: ${(props) => props.theme.white};
     }
+
+    @media (max-width: 450px) {
+      margin-top: 0rem;
+  }
+
+
   }
   img {
     position: absolute;
-    bottom: -14rem;
-    top: 0px;
+    bottom: 0px;
+    top: -10rem;
     left: 0px;
     right: 0px;
     margin: auto;
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
+
+    @media (max-width: 450px) {
+      top: -2rem;
+      width: 7rem;
+    height: 7rem
+  }
   }
 `;
 export const Padding = styled.div`
@@ -69,6 +89,11 @@ export const Title = styled.p`
   color: ${(props) => props.theme["title"]};
   font-size: 2.5rem;
   font-weight: bold;
+
+
+  @media (max-width: 450px) {
+    margin-top: 0px;
+  }
 
   @media (max-width: 375px) {
     font-size: 1.5rem;

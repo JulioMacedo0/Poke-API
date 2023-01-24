@@ -129,7 +129,9 @@ const getFlavorsTexts = async (url : string) => {
     <>
       <Header />
       <S.Container >
+
         <S.Content type={state.pokemonTypes[0].type.name}>
+        <img src={state.pokemonImg} />
           <S.Padding>
             <header>
               <Link to="/">
@@ -143,7 +145,7 @@ const getFlavorsTexts = async (url : string) => {
                 state.pokemonTypes.map( type => <S.TypeSpan key={type.type.name} type={state.pokemonTypes[0].type.name}>{type.type.name}</S.TypeSpan>)
               }
             </S.TypeContainer>
-            <img src={state.pokemonImg} />
+
           </S.Padding>
           <S.PokemonInfo>
             <S.TabContainer>
