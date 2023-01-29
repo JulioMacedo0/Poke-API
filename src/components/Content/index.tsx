@@ -19,7 +19,7 @@ const defaultOptions = {
 
 
 export const Content = () => {
-  const { pokemons, page, isLoading, GetPokemons } = usePokemon();
+  const { pokemons, page, isLoading, getPokemons } = usePokemon();
   const Ref = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
 
@@ -54,7 +54,7 @@ export const Content = () => {
         <button
           disabled={page - 1 < 1}
           onClick={() => {
-            GetPokemons(page - 1);
+            getPokemons(page - 1);
             Ref.current?.scrollIntoView({ behavior: "smooth" });
           }}
         >
@@ -63,7 +63,7 @@ export const Content = () => {
         <span>{page}</span>
         <button
           onClick={() => {
-            GetPokemons(page + 1);
+            getPokemons(page + 1);
             Ref.current?.scrollIntoView({ behavior: "smooth" });
           }}
         >
