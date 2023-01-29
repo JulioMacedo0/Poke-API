@@ -83,7 +83,7 @@ interface ArrayPokemons {
 export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
   const [pokemons, setPokemons] = useState<Pokemons[]>([]);
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [input , setInput] = useState('');
   const [pokemon, setPokemon] = useState<Pokemons>({} as Pokemons);
 
