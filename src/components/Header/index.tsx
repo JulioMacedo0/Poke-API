@@ -12,7 +12,11 @@ export const Header = () => {
         <S.ImgLogo src={Logo} />
         <div>
           <MagnifyingGlass size={22} />
-          <input type="text" onChange={ (event) => onChangeInput(event.target.value)}/>
+          <input type="text" onChange={ (event) => onChangeInput(event.target.value)} onKeyDown={(event) => {
+            if (event.keyCode === 13 || event.keyCode === 10 || event.key === 'Tab' ) {
+              getPokemon(input);
+              }
+          }}/>
           <button onClick={ () => getPokemon(input)}>Search</button>
         </div>
       </S.HeaderWrap>
