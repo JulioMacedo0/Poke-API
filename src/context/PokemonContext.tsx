@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { toast } from "react-toastify";
 import { api } from "../api/api";
 
 interface PokemonContextType {
@@ -92,15 +93,28 @@ const clearSearchPokemon =() => {
 }
 
 const getPokemon = async  (pokemon: String)  => {
-
+  setIsLoading(true);
 
   try {
     const data = (await api.get(`pokemon/${pokemon}`)).data
 
 
   setPokemon(data);
+  setIsLoading(false);
   } catch (error) {
-    alert('Não foi possivel encontrar o pokemon')
+
+    toast.error('could not find pokemon', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+   console.log(error)
+    setIsLoading(false);
   }
 
 }
