@@ -19,15 +19,36 @@ const defaultOptions = {
 
 
 export const Content = () => {
-  const { pokemons, page, isLoading, getPokemons } = usePokemon();
+  const { pokemons, pokemon, page, isLoading, getPokemons, clearSearchPokemon } = usePokemon();
   const Ref = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
+
 
 
   return (
     <>
       <S.Container ref={Ref}>
-        {pokemons?.map((pokemon) => {
+        {
+          pokemon.name && <Card
+          onClick={() => navigate(`/pokemon`, {state: {
+            name: pokemon.name,
+            pokemonImg: pokemon.sprites?.other.dream_world.front_default,
+            pokemonTypes: pokemon.types,
+            stats: pokemon.stats,
+            height: pokemon.height,
+            weight: pokemon.weight,
+            abilities: pokemon.abilities,
+            base_experience: pokemon.base_experience,
+            moves: pokemon.moves,
+            species: pokemon.species
+          }}
+          )}
+            name={pokemon.name}
+            pokemonImg={pokemon.sprites?.other.dream_world.front_default}
+            types={pokemon.types}
+          />
+        }
+        {!pokemon.name && pokemons?.map((pokemon) => {
           return (
             <Card
               onClick={() => navigate(`/pokemon`, {state: {
@@ -41,16 +62,23 @@ export const Content = () => {
                 base_experience: pokemon.base_experience,
                 moves: pokemon.moves,
                 species: pokemon.species
-              }})}
+              }}
+              )}
               key={pokemon.id}
               name={pokemon.name}
               pokemonImg={pokemon.sprites.other.dream_world.front_default}
               types={pokemon.types}
             />
           );
-        })}
+        })
+        }
       </S.Container>
       <S.ButtonsContainer>
+
+          {
+            !pokemon.name &&
+        (
+        <>
         <button
           disabled={page - 1 < 1}
           onClick={() => {
@@ -69,6 +97,13 @@ export const Content = () => {
         >
           Next Page
         </button>
+        </>
+        )
+   }
+
+   {
+    pokemon.name && (<button onClick={() => clearSearchPokemon()}>Go home</button>)
+   }
         {isLoading && (
           <S.Overlay>
             <Lottie options={defaultOptions} height={150} width={150} />
