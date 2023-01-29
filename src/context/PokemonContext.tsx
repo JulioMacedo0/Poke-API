@@ -93,6 +93,8 @@ const clearSearchPokemon =() => {
 }
 
 const getPokemon = async  (pokemon: String)  => {
+
+    if(pokemon){
   setIsLoading(true);
 
   try {
@@ -101,6 +103,7 @@ const getPokemon = async  (pokemon: String)  => {
 
   setPokemon(data);
   setIsLoading(false);
+  setInput('');
   } catch (error) {
 
     toast.error('could not find pokemon', {
@@ -115,8 +118,9 @@ const getPokemon = async  (pokemon: String)  => {
       });
    console.log(error)
     setIsLoading(false);
+    setInput('');
   }
-
+}
 }
 
   const onChangeInput = (value: string) => {
