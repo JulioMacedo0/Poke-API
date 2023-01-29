@@ -9,9 +9,13 @@ import { api } from "../api/api";
 
 interface PokemonContextType {
   pokemons: Pokemons[];
+  pokemon: Pokemons;
   page: number;
-  GetPokemons: (page: number) => void;
   isLoading: boolean;
+  input: string;
+  getPokemons: (page: number) => void;
+  getPokemon: (pokemon: string) => void;
+  onChangeInput: (value: string) => void;
 }
 
 interface PokemoncontextProps {
@@ -78,9 +82,21 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
   const [pokemons, setPokemons] = useState<Pokemons[]>([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [input , setInput] = useState('');
+  const [pokemon, setPokemon] = useState<Pokemons>({} as Pokemons);
 
 
-  const GetPokemons = (page: number) => {
+const getPokemon = async  (pokemon: String)  => {
+  const data = (await api.get(`pokemon/${pokemon}`)).data
+
+  setPokemon(data);
+}
+
+  const onChangeInput = (value: string) => {
+      setInput(value);
+  }
+
+  const getPokemons = (page: number) => {
     setIsLoading(true);
     const limit = 21;
     const offset = (page - 1) * limit;
@@ -111,11 +127,11 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
   };
 
   useEffect(() => {
- GetPokemons(1)
+ getPokemons(1)
   }, []);
 
   return (
-    <PokemonContext.Provider value={{ pokemons, page, isLoading, GetPokemons }}>
+    <PokemonContext.Provider value={{ input,pokemons, pokemon, page, isLoading, getPokemons, getPokemon, onChangeInput }}>
       {children}
     </PokemonContext.Provider>
   );
