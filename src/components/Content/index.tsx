@@ -89,7 +89,7 @@ theme="light"
       <S.ButtonsContainer>
 
           {
-            !pokemon.name &&
+            !pokemon.name && pokemons.length &&
         (
         <>
         <button
