@@ -229,7 +229,7 @@ const getFlavorsTexts = async (url : string) => {
               </S.TabContent>
 
               <S.TabContent active={tab == 3}>
-                Tab 3
+               Comming soon...
               </S.TabContent>
 
               <S.TabContent active={tab == 4}>
