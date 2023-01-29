@@ -16,6 +16,7 @@ interface PokemonContextType {
   getPokemons: (page: number) => void;
   getPokemon: (pokemon: string) => void;
   onChangeInput: (value: string) => void;
+  clearSearchPokemon: () => void;
 }
 
 interface PokemoncontextProps {
@@ -86,10 +87,22 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
   const [pokemon, setPokemon] = useState<Pokemons>({} as Pokemons);
 
 
+const clearSearchPokemon =() => {
+  setPokemon({} as Pokemons );
+}
+
 const getPokemon = async  (pokemon: String)  => {
-  const data = (await api.get(`pokemon/${pokemon}`)).data
+
+
+  try {
+    const data = (await api.get(`pokemon/${pokemon}`)).data
+
 
   setPokemon(data);
+  } catch (error) {
+    alert('Não foi possivel encontrar o pokemon')
+  }
+
 }
 
   const onChangeInput = (value: string) => {
@@ -131,7 +144,7 @@ const getPokemon = async  (pokemon: String)  => {
   }, []);
 
   return (
-    <PokemonContext.Provider value={{ input,pokemons, pokemon, page, isLoading, getPokemons, getPokemon, onChangeInput }}>
+    <PokemonContext.Provider value={{ input,pokemons, pokemon, page, isLoading, getPokemons, getPokemon, onChangeInput, clearSearchPokemon }}>
       {children}
     </PokemonContext.Provider>
   );
