@@ -94,7 +94,7 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
       setIsLoading(true);
 
       try {
-        const data = (await api.get(`pokemon/${pokemon.toLowerCase}`)).data;
+        const data = (await api.get(`pokemon/${pokemon.toLowerCase()}`)).data;
 
         setPokemon(data);
         setIsLoading(false);
