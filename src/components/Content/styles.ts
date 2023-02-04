@@ -22,16 +22,20 @@ export const ButtonsContainer = styled.div`
   justify-content: center;
 
   button {
-    background-color: #4caf50; /* Green */
+    appearance: none;
     border: none;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 1rem;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: ${(props) => props.theme["yellow"]};
+    color: brown;
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: brown;
+      color: yellow;
+    }
   }
 
   button:disabled {
@@ -40,7 +44,8 @@ export const ButtonsContainer = styled.div`
     cursor: default;
   }
   button:not(:disabled):hover {
-    background-color: #3e8e41;
+    background-color: brown;
+    color: yellow;
   }
 
   span {
