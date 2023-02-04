@@ -44,12 +44,10 @@ interface abilitiesType {
 }
 
 interface movesType {
-
   move: {
     name: string;
     url: string;
-  }
-
+  };
 }
 
 export interface Pokemons {
@@ -63,9 +61,9 @@ export interface Pokemons {
   abilities: abilitiesType[];
   moves: movesType[];
   species: {
-    name: string,
-    url: string,
-  }
+    name: string;
+    url: string;
+  };
   sprites: {
     other: {
       dream_world: {
@@ -84,48 +82,44 @@ export const PokemonContextProvider = ({ children }: PokemoncontextProps) => {
   const [pokemons, setPokemons] = useState<Pokemons[]>([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const [input , setInput] = useState('');
+  const [input, setInput] = useState("");
   const [pokemon, setPokemon] = useState<Pokemons>({} as Pokemons);
 
+  const clearSearchPokemon = () => {
+    setPokemon({} as Pokemons);
+  };
 
-const clearSearchPokemon =() => {
-  setPokemon({} as Pokemons );
-}
+  const getPokemon = async (pokemon: String) => {
+    if (pokemon) {
+      setIsLoading(true);
 
-const getPokemon = async  (pokemon: String)  => {
+      try {
+        const data = (await api.get(`pokemon/${pokemon.toLowerCase}`)).data;
 
-    if(pokemon){
-  setIsLoading(true);
-
-  try {
-    const data = (await api.get(`pokemon/${pokemon}`)).data
-
-
-  setPokemon(data);
-  setIsLoading(false);
-  setInput('');
-  } catch (error) {
-
-    toast.error('could not find pokemon', {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      });
-   console.log(error)
-    setIsLoading(false);
-    setInput('');
-  }
-}
-}
+        setPokemon(data);
+        setIsLoading(false);
+        setInput("");
+      } catch (error) {
+        toast.error("could not find pokemon", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        console.log(error);
+        setIsLoading(false);
+        setInput("");
+      }
+    }
+  };
 
   const onChangeInput = (value: string) => {
-      setInput(value);
-  }
+    setInput(value);
+  };
 
   const getPokemons = (page: number) => {
     setIsLoading(true);
@@ -134,10 +128,9 @@ const getPokemon = async  (pokemon: String)  => {
     const url = `pokemon?offset=${offset}&limit=${limit}`;
 
     api.get(`/${url}`).then((response) => {
-      const requests = response.data.results.map((obj: ArrayPokemons) =>{
-        return fetch(obj.url)
-      }
-      );
+      const requests = response.data.results.map((obj: ArrayPokemons) => {
+        return fetch(obj.url);
+      });
 
       Promise.all(requests)
         .then((responses) => {
@@ -158,11 +151,23 @@ const getPokemon = async  (pokemon: String)  => {
   };
 
   useEffect(() => {
- getPokemons(1)
+    getPokemons(1);
   }, []);
 
   return (
-    <PokemonContext.Provider value={{ input,pokemons, pokemon, page, isLoading, getPokemons, getPokemon, onChangeInput, clearSearchPokemon }}>
+    <PokemonContext.Provider
+      value={{
+        input,
+        pokemons,
+        pokemon,
+        page,
+        isLoading,
+        getPokemons,
+        getPokemon,
+        onChangeInput,
+        clearSearchPokemon,
+      }}
+    >
       {children}
     </PokemonContext.Provider>
   );
