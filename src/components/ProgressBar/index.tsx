@@ -5,11 +5,11 @@ interface ProgressBarProps {
   maxValue: number;
 }
 
-
-export const ProgressBar = ({currentValue, maxValue}: ProgressBarProps) => {
-    return (
-      <S.ProgressBar maxValue={maxValue} currentValue={currentValue}>
-
-      </S.ProgressBar>
-    )
+export const ProgressBar = ({ currentValue, maxValue }: ProgressBarProps) => {
+  return (
+    <S.ProgressBar
+      maxValue={maxValue}
+      currentValue={currentValue}
+    ></S.ProgressBar>
+  );
 };
