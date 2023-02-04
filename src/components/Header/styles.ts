@@ -58,7 +58,7 @@ export const HeaderWrap = styled.div`
     }
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 450px) {
     input {
       width: 70%;
     }
